@@ -1,9 +1,8 @@
-# bus-ticket-android-php-mysql
+# bus-ticket-android-php-mysql-2
+
+<h2>This is an extension to the OG project found here https://github.com/vignesh98/bus-ticket-android-php-mysql</h2>
+<h3>This project is built on the base of the bus ticket system mentioned above along with added functionality of GPS,usage of sensors etc </h3>
 Bus ticket android app using Android Studio,PHP,MySQL
-This is a simple project.no extra stuff created as part of a mini project in college
-There are two apps. one for passenger to create a ticket and the ticket id will be saved in the database. the ticket will be saved in the form of a QR code. the conductor app is a seperate app which the conductor can use to scan the QR code.
 
-
-For further info, you can refer the projectreport document which contains most of the info needed.
 
 Thank you.
