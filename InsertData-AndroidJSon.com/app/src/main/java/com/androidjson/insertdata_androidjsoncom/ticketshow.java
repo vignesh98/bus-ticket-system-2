@@ -1,6 +1,7 @@
 package com.androidjson.insertdata_androidjsoncom;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
@@ -12,16 +13,33 @@ import android.provider.MediaStore;
 //import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,17 +49,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
-public class ticketshow extends AppCompatActivity {
+public class ticketshow extends AppCompatActivity implements OnMapReadyCallback {
     ImageView imview;
     String ticketid = journeyplan.ticketdata;
 
 
     String datefromjourney = journeyplan.date1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticketshow);
         imview = (ImageView) findViewById(R.id.imageView);
+
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
         String ticketqr = ticketid;
         int height = 500;
         int width = 500;
@@ -53,12 +76,13 @@ public class ticketshow extends AppCompatActivity {
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             imview.setImageBitmap(bitmap);
 
-           saveImageBitmap(bitmap,datefromjourney);
+            saveImageBitmap(bitmap, datefromjourney);
         } catch (WriterException e) {
             e.printStackTrace();
         }
 
     }
+
     public boolean isStoragePermissionGranted() {
         String TAG = "Storage Permission";
         if (Build.VERSION.SDK_INT >= 23) {
@@ -71,9 +95,8 @@ public class ticketshow extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 return false;
             }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG,"Permission is granted");
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG, "Permission is granted");
             return true;
         }
     }
@@ -106,7 +129,19 @@ public class ticketshow extends AppCompatActivity {
             MediaScannerConnection.scanFile(this, new String[]{file.toString()}, new String[]{file.getName()}, null);
         }
     }
+
+    //todo solve the scrolling issue https://mahendrarajdhami.wordpress.com/2018/05/02/how-to-solve-scrolling-issue-in-google-maps-api-v2-supportmapfragment-inside-scrollview-when-we-try-to-scroll-map-vertically-parent-scroll-is-also-scrolled/
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(10, 10)).title("Marker"));
+
+
+    }
 }
+
+
+
 
 
 
