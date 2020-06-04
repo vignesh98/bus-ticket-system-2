@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/InsertData-AndroidJSon.com.iml" filepath="$PROJECT_DIR$/InsertData-AndroidJSon.com.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/InsertData-AndroidJSon.com.iml" filepath="$PROJECT_DIR$/.idea/modules/InsertData-AndroidJSon.com.iml" group="InsertData-AndroidJSon.com" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="InsertData-AndroidJSon.com/app" />
     </modules>
   </component>
 </project>

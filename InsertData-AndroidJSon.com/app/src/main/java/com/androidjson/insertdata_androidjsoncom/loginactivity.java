@@ -1,8 +1,9 @@
 package com.androidjson.insertdata_androidjsoncom;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,7 @@ Button button4;
 public static String Tempuname;
 String loginstatus,TempPassword,loginstat,str;
 EditText uname,pass;
-String ServerURL = "http://18.190.20.182/verify_user_login.php";
+String ServerURL = "http://192.168.0.103/jbus/verify_user_login.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

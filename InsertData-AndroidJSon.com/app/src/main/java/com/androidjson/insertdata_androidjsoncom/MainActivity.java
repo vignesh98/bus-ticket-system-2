@@ -2,8 +2,9 @@ package com.androidjson.insertdata_androidjsoncom;
 import android.content.Entity;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,10 +26,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
+import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
-    String ServerURL = "http://18.190.20.182/user_register.php" ;
+    String ServerURL = "http://192.168.0.103/jbus/user_register.php" ;
     EditText name,email,age,password ;
     Button button,button2;
     String TempName,Tempemail,Tempage,TempPassword,str ;

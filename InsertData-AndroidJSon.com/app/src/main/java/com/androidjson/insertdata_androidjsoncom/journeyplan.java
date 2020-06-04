@@ -1,10 +1,11 @@
 package com.androidjson.insertdata_androidjsoncom;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,7 +38,7 @@ public class journeyplan extends AppCompatActivity {
 Button button;
 EditText date;
 Spinner spin,spin2;
-String ServerURL="http://18.190.20.182/save_journey_details.php",str;
+String ServerURL="http://192.168.0.103/jbus/save_journey_details.php",str;
     String passengerusername = loginactivity.Tempuname;
     public static DateFormat df = new SimpleDateFormat("ddMMyyyyHHmmss");
     public static String date1 = df.format(Calendar.getInstance().getTime());
