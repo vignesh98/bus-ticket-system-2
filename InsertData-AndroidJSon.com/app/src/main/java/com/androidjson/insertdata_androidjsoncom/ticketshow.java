@@ -14,9 +14,11 @@ import android.provider.MediaStore;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.zxing.BarcodeFormat;
@@ -56,15 +59,20 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
 
     String datefromjourney = journeyplan.date1;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticketshow);
         imview = (ImageView) findViewById(R.id.imageView);
+/////////////////////////////////////////////
 
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
+
+///////////////////////////////////////////////
         String ticketqr = ticketid;
         int height = 500;
         int width = 500;
@@ -130,14 +138,17 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
         }
     }
 
-    //todo solve the scrolling issue https://mahendrarajdhami.wordpress.com/2018/05/02/how-to-solve-scrolling-issue-in-google-maps-api-v2-supportmapfragment-inside-scrollview-when-we-try-to-scroll-map-vertically-parent-scroll-is-also-scrolled/
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         googleMap.addMarker(new MarkerOptions().position(new LatLng(10, 10)).title("Marker"));
 
-
     }
+
+
+
+
 }
 
 
