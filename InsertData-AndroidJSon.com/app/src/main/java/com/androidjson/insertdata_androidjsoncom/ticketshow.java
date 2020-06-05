@@ -34,6 +34,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -140,9 +141,22 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
 
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
 
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(10, 10)).title("Marker"));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(10, 10)).title("Marker1"));
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(20, 20)).title("Marker2"));
+
+
+
+        LatLng source = new LatLng(10.519510, 76.205870);
+        LatLng destination = new LatLng(30.200730, 74.490500);
+
+        new GetPathFromLocation(source, destination, new DirectionPointListener() {
+            @Override
+            public void onPath(PolylineOptions polyLine) {
+                googleMap.addPolyline(polyLine);
+            }
+        }).execute();
 
     }
 

@@ -35,8 +35,8 @@ import java.util.List;
 
 public class journeyplan extends AppCompatActivity {
     Button bookbut;
-Button button;
-EditText date;
+    Button button;
+    EditText date;
 Spinner spin,spin2;
 String ServerURL="http://192.168.0.103/jbus/save_journey_details.php",str;
     String passengerusername = loginactivity.Tempuname;
