@@ -17,6 +17,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 //import android.support.v4.app.ActivityCompat;
 //import android.support.v7.app.AppCompatActivity;
@@ -26,8 +27,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -76,7 +79,10 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
     ImageView imview;
 
     String ticketid = journeyplan.ticketdata;
-   // String n = paymentgate.tempnum;
+
+
+    TextView disttimeview;
+
 
     String datefromjourney = journeyplan.date1;
     String fromaddfromjourney = journeyplan.fromadd;
@@ -94,18 +100,7 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticketshow);
         imview = (ImageView) findViewById(R.id.imageView);
-/////////////////////////////////////////////
 
-       // MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-       // mapFragment.getMapAsync(this);
-
-
-        /////////////////////////
-
-
-
-        ////////////////////////
-///////////////////////////////////////////////
         String ticketqr = ticketid;
         int height = 500;
         int width = 500;
@@ -263,9 +258,10 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng1, 10));
         googleMap.addMarker(markerOptions);
 
-       LatLng a  = getLocationFromAddress(ticketshow.this,fromaddfromjourney);
-       LatLng b  = getLocationFromAddress(ticketshow.this,toaddfromjourney);
-       System.out.println("the latlang from gajuwaka "+a);
+        LatLng a  = getLocationFromAddress(ticketshow.this,fromaddfromjourney);
+        LatLng b  = getLocationFromAddress(ticketshow.this,toaddfromjourney);
+       // timea = DirectionHelper.timetaken;
+      //  System.out.println("the latlang from gajuwaka "+timea);
       //  getLocationFromAddress(ticketshow.this,"NAD");
        // System.out.println(source);
        //LatLng source = new LatLng(17.69, 83.22);
@@ -284,12 +280,35 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
             }
         }).execute();
 
+        showdisttime();
+
     }
+
+    private void showdisttime() {
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //5s = 5000ms
+                String Gtime = GetPathFromLocation.timetaken;
+                String Gdist = GetPathFromLocation.distancetobecovered;
+                disttimeview = findViewById(R.id.disttime);
+                disttimeview.setText("Distance to be covered is " + Gdist +
+                        " and expected journey time is " + Gtime);
+
+            }
+        }, 5000);
+
+
+    }
+
     @Override
     public void onBackPressed() {
         //TODO enable this on the end
       //Toast.makeText(getApplicationContext(),n, Toast.LENGTH_SHORT).show();
        // System.out.println("The n value is "+n);
+
     }
 
 

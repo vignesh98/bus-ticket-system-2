@@ -10,8 +10,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 public class paymentgate extends AppCompatActivity {
     public static String tempnum = "";
+
     TextView tcost,wallet;
     String walletbalance="500";
     EditText mobilenum;
@@ -54,10 +61,41 @@ public class paymentgate extends AppCompatActivity {
         mobilenum= (EditText)findViewById(R.id.phnum);
         tempnum = mobilenum.getText().toString();
 
+        ////////////////////////////////////////
+        HttpClient Client = new DefaultHttpClient();
 
+        // Create URL string
+
+        String URL = "ht";
+
+        //Log.i("httpget", URL);
+
+        try
+        {
+            String SetServerString = "";
+
+            // Create Request to server and get response
+
+            HttpGet httpget = new HttpGet(URL);
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            SetServerString = Client.execute(httpget, responseHandler);
+
+            // Show response on activity
+
+           // content.setText(SetServerString);
+        }
+        catch(Exception ex)
+        {
+           // content.setText("Fail!");
+        }
+    }
+
+
+
+    ///////////////////////////////////////
 
 
 
     }
 
-}
+

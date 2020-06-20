@@ -7,6 +7,7 @@ import android.util.Log;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -24,6 +25,8 @@ public class GetPathFromLocation extends AsyncTask<String, Void, PolylineOptions
     private String API_KEY = "AIzaSyAayvJ5hmPA_QbQy5GRwf_6ULtP-wQOvoI";
     private LatLng source, destination;
     private DirectionPointListener resultCallback;
+    public static String timetaken;
+    public static String distancetobecovered;
 
     public GetPathFromLocation(LatLng source, LatLng destination, DirectionPointListener resultCallback) {
         this.source = source;
@@ -86,6 +89,29 @@ public class GetPathFromLocation extends AsyncTask<String, Void, PolylineOptions
                 // Starts parsing data
                 DirectionHelper helper = new DirectionHelper();
                 routes = helper.parse(jsonObject);
+
+                ///////////////////
+
+                final JSONObject json = new JSONObject(data);
+                JSONArray routeArray = json.getJSONArray("routes");
+                JSONObject routes1 = routeArray.getJSONObject(0);
+
+                JSONArray newTempARr = routes1.getJSONArray("legs");
+                JSONObject newDisTimeOb = newTempARr.getJSONObject(0);
+
+                JSONObject distOb = newDisTimeOb.getJSONObject("distance");
+                JSONObject timeOb = newDisTimeOb.getJSONObject("duration");
+
+                timetaken = timeOb.getString("text");
+                distancetobecovered = distOb.getString("text");
+
+                Log.i("Diatance :", distOb.getString("text"));
+                Log.i("Time :", timeOb.getString("text"));
+
+
+                ///////////////
+
+
                 Log.e(TAG, "Executing Routes : "/*, routes.toString()*/);
 
 

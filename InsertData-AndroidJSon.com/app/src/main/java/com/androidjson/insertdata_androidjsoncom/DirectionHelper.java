@@ -1,5 +1,7 @@
 package com.androidjson.insertdata_androidjsoncom;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
@@ -12,6 +14,8 @@ import java.util.List;
 
 public class DirectionHelper {
 
+
+    public static String timetaken;
     public List<List<HashMap<String, String>>> parse(JSONObject jObject) {
 
         List<List<HashMap<String, String>>> routes = new ArrayList<>();
@@ -22,7 +26,16 @@ public class DirectionHelper {
         try {
 
             jRoutes = jObject.getJSONArray("routes");
+           // Log.e(TAG,jRoutes);
+            ///////////////////////////////
+//            JSONObject durationObject = jObject.getJSONObject("duration");
+//            timetaken = durationObject.getString("text");
 
+
+
+
+
+            //////////////////////////////////////////////
             /** Traversing all routes */
             for (int i = 0; i < jRoutes.length(); i++) {
                 jLegs = ((JSONObject) jRoutes.get(i)).getJSONArray("legs");

@@ -78,9 +78,9 @@ public static String fromadd,toadd,ticketdata,paymentamount;
             public void onClick(View v) {
              // Intent myInt = new Intent(journeyplan.this,ticketshow.class);
              //   startActivity(myInt);
-                fromadd=spin.getSelectedItem().toString();
-                toadd=spin2.getSelectedItem().toString();
-                ticketdata = fromadd+toadd+date1;
+//                fromadd=spin.getSelectedItem().toString();
+//                toadd=spin2.getSelectedItem().toString();
+//                ticketdata = fromadd+toadd+date1;
                 openFolder();
             }
         });
@@ -92,13 +92,13 @@ public static String fromadd,toadd,ticketdata,paymentamount;
 
     public void openFolder()
     {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setType("*/*");
-        startActivity(intent);
+//        Intent intent = new Intent();
+//        intent.setAction(Intent.ACTION_VIEW);
+//        intent.setType("*/*");
+//        startActivity(intent);
 //
-//        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(
-//                "content:/storage/emulated/0/Pictures"));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("content:/storage/emulated/0/Pictures"));
+        startActivity(intent);
     }
 
 
