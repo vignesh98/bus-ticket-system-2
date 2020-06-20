@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class paymentgate extends AppCompatActivity {
+    public static String tempnum = "";
     TextView tcost,wallet;
     String walletbalance="500";
+    EditText mobilenum;
     Button paybutton;
 
     @Override
@@ -26,6 +29,8 @@ public class paymentgate extends AppCompatActivity {
        wallet=(TextView) findViewById(R.id.wallettextview);
        wallet.setText(walletbalance);
 
+
+
         paybutton = (Button) findViewById(R.id.paymentbutton);
 
         paybutton.setOnClickListener(new View.OnClickListener() {
@@ -37,9 +42,22 @@ public class paymentgate extends AppCompatActivity {
                 int balance=1;
                 Intent myInt = new Intent(paymentgate.this,ticketshow.class);
                 startActivity(myInt);
-
+                getdetails();
+                Toast.makeText(getApplicationContext(), tempnum, Toast.LENGTH_LONG).show();
+                System.out.println("al n is " + tempnum);
             }
         });
 
     }
+
+    private void getdetails() {
+        mobilenum= (EditText)findViewById(R.id.phnum);
+        tempnum = mobilenum.getText().toString();
+
+
+
+
+
+    }
+
 }

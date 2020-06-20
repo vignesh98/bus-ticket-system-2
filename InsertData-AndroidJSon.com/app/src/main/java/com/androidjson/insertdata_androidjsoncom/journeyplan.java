@@ -88,6 +88,8 @@ public static String fromadd,toadd,ticketdata,paymentamount;
 
 
 
+
+
     public void openFolder()
     {
         Intent intent = new Intent();
@@ -98,6 +100,7 @@ public static String fromadd,toadd,ticketdata,paymentamount;
 //        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(
 //                "content:/storage/emulated/0/Pictures"));
     }
+
 
 
 
@@ -157,5 +160,12 @@ public static String fromadd,toadd,ticketdata,paymentamount;
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
 
         sendPostReqAsyncTask.execute(name,fromadd,toadd,ticketdata);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //TODO enable this on the end
+        //  Toast.makeText(getApplicationContext(), "Cant go back", Toast.LENGTH_SHORT).show();
+
     }
 }

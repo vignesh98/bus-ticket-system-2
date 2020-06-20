@@ -76,7 +76,7 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
     ImageView imview;
 
     String ticketid = journeyplan.ticketdata;
-
+   // String n = paymentgate.tempnum;
 
     String datefromjourney = journeyplan.date1;
     String fromaddfromjourney = journeyplan.fromadd;
@@ -155,7 +155,7 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
             public void onSuccess(Location location) {
                 if (location != null) {
                     currentLocation = location;
-                    Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + "" + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), currentLocation.getLatitude() + "" + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
                     SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
                     assert supportMapFragment != null;
                     supportMapFragment.getMapAsync(ticketshow.this);
@@ -256,33 +256,41 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
        // googleMap.addMarker(new MarkerOptions().position(new LatLng(10, 10)).title("Marker1"));
        // googleMap.addMarker(new MarkerOptions().position(new LatLng(20, 20)).title("Marker2"));
 
-        System.out.println(currentLocation.getLatitude()+"--"+currentLocation.getLongitude());
+
         LatLng latLng1 = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng1).title("I am here!").icon(BitmapDescriptorFactory.fromResource(R.drawable.moon));
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng1));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng1, 10));
         googleMap.addMarker(markerOptions);
 
-        LatLng source = getLocationFromAddress(ticketshow.this,"Gajuwaka bus depot");
-        LatLng destination = getLocationFromAddress(ticketshow.this,"NAD");
-        System.out.println(source);
+       LatLng a  = getLocationFromAddress(ticketshow.this,fromaddfromjourney);
+       LatLng b  = getLocationFromAddress(ticketshow.this,toaddfromjourney);
+       System.out.println("the latlang from gajuwaka "+a);
+      //  getLocationFromAddress(ticketshow.this,"NAD");
+       // System.out.println(source);
        //LatLng source = new LatLng(17.69, 83.22);
-      // LatLng destination = new LatLng(17.74, 83.22);
+       //System.out.println("Tjis is source:" + source);
+      //LatLng destination = new LatLng(17.74, 83.22);
 
-       //googleMap.addMarker(new MarkerOptions().position(source).title("Marker1").icon(BitmapDescriptorFactory.fromResource(R.drawable.lettera)));
-      // googleMap.addMarker(new MarkerOptions().position(destination).title("Marker2").icon(BitmapDescriptorFactory.fromResource(R.drawable.letterb)));
+        googleMap.addMarker(new MarkerOptions().position(a).title("Marker1").icon(BitmapDescriptorFactory.fromResource(R.drawable.lettera)));
+        googleMap.addMarker(new MarkerOptions().position(b).title("Marker2").icon(BitmapDescriptorFactory.fromResource(R.drawable.letterb)));
 
 
 
-        new GetPathFromLocation(source, destination, new DirectionPointListener() {
+        new GetPathFromLocation(a, b, new DirectionPointListener() {
             @Override
             public void onPath(PolylineOptions polyLine) {
-             //   googleMap.addPolyline(polyLine);
+             googleMap.addPolyline(polyLine);
             }
         }).execute();
 
     }
-
+    @Override
+    public void onBackPressed() {
+        //TODO enable this on the end
+      //Toast.makeText(getApplicationContext(),n, Toast.LENGTH_SHORT).show();
+       // System.out.println("The n value is "+n);
+    }
 
 
 
