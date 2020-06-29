@@ -260,13 +260,7 @@ public class ticketshow extends AppCompatActivity implements OnMapReadyCallback 
 
         LatLng a  = getLocationFromAddress(ticketshow.this,fromaddfromjourney);
         LatLng b  = getLocationFromAddress(ticketshow.this,toaddfromjourney);
-       // timea = DirectionHelper.timetaken;
-      //  System.out.println("the latlang from gajuwaka "+timea);
-      //  getLocationFromAddress(ticketshow.this,"NAD");
-       // System.out.println(source);
-       //LatLng source = new LatLng(17.69, 83.22);
-       //System.out.println("Tjis is source:" + source);
-      //LatLng destination = new LatLng(17.74, 83.22);
+
 
         googleMap.addMarker(new MarkerOptions().position(a).title("Marker1").icon(BitmapDescriptorFactory.fromResource(R.drawable.lettera)));
         googleMap.addMarker(new MarkerOptions().position(b).title("Marker2").icon(BitmapDescriptorFactory.fromResource(R.drawable.letterb)));

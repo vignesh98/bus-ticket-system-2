@@ -39,7 +39,7 @@ public class paymentgate extends AppCompatActivity {
     String walletbalance="500";
     EditText mobilenum;
     Button paybutton;
-    long num = 9986203584L;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +77,7 @@ public class paymentgate extends AppCompatActivity {
         mobilenum= (EditText)findViewById(R.id.phnum);
         tempnum = mobilenum.getText().toString();
 
-        ////////////////////////////////////////
+        ////////////////////////////////////////SMS  API
 //
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://192.168.0.105:8080/?number="+tempnum+"&smsbody=Your ticket booking is " +

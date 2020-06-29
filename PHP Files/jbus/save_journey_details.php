@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost","root","error","employee101");
+$con = mysqli_connect("localhost","root","error@404","employee101");
 if (isset($_POST["name"])) {
 $reg_name=$_POST["name"];
 }

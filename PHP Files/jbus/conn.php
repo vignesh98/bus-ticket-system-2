@@ -1,11 +1,11 @@
 <?php
 
 
-$HostName = "localhost:8080";
+$HostName = "localhost";
 
 $HostUser = "root";
 
-$HostPass = "error";
+$HostPass = "error@404";
 
 $DatabaseName = "employee101";
 
