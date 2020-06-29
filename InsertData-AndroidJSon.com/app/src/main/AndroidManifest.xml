@@ -18,7 +18,7 @@
             android:resource="@xml/actions"/>
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAayvJ5hmPA_QbQy5GRwf_6ULtP-wQOvoI" />
+            android:value="" />
         <activity android:name=".ticketshow" />
         <activity android:name=".paymentgate" />
         <activity android:name=".journeyplan" />
