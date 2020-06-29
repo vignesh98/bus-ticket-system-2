@@ -92,13 +92,13 @@ public static String fromadd,toadd,ticketdata,paymentamount;
 
     public void openFolder()
     {
-//        Intent intent = new Intent();
-//        intent.setAction(Intent.ACTION_VIEW);
-//        intent.setType("*/*");
-//        startActivity(intent);
-//
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("content:/storage/emulated/0/Pictures"));
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setType("*/*");
         startActivity(intent);
+
+//        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("content:/storage/emulated/0/Pictures"));
+//        startActivity(intent);
     }
 
 

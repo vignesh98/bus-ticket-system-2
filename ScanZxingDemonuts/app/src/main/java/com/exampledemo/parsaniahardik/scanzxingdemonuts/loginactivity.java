@@ -29,7 +29,7 @@ public class loginactivity extends AppCompatActivity {
     public static String Tempuname;
     String loginstatus,TempPassword,loginstat,str;
     EditText uname,pass;
-    String ServerURL = "http://18.190.20.182/verify_conductor_login.php" ;
+    String ServerURL = "http://192.168.0.103/jbus/verify_conductor_login.php" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

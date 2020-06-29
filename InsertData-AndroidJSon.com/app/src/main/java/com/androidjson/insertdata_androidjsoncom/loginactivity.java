@@ -42,9 +42,17 @@ String ServerURL = "http://192.168.0.103/jbus/verify_user_login.php";
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 getlogindetails();
 
-               verifylogin(Tempuname,TempPassword);
+                if(Tempuname.isEmpty() || TempPassword.isEmpty()) {
+
+                    Toast.makeText(loginactivity.this, "Enter all the required fields", Toast.LENGTH_LONG).show();
+                }
+                else{
+
+                    verifylogin(Tempuname, TempPassword);
+                }
 
               // Toast.makeText(loginactivity.this, str, Toast.LENGTH_LONG).show();
 

@@ -28,7 +28,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class ScanActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
 
-   String str,ticketdata,checkticketurl="http://18.190.20.182/verify_ticket.php";
+   String str,ticketdata,checkticketurl="http://192.168.0.103/jbus/verify_ticket.php";
     private ZXingScannerView mScannerView;
 
     @Override

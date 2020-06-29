@@ -51,8 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
                 GetData();
 
-                InsertData(TempName,Tempemail,Tempage,TempPassword);
-
+                if (TempName.isEmpty() || TempPassword.isEmpty() || Tempage.isEmpty() || Tempemail.isEmpty())
+                {
+                    Toast.makeText(MainActivity.this, "Enter all the required fields", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    InsertData(TempName, Tempemail, Tempage, TempPassword);
+                }
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
