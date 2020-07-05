@@ -91,27 +91,18 @@ public class MainActivity extends AppCompatActivity {
                 String PasswordHolder = reg_password ;
 
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
-
                 nameValuePairs.add(new BasicNameValuePair("regname", NameHolder));
                 nameValuePairs.add(new BasicNameValuePair("regemail", EmailHolder));
                 nameValuePairs.add(new BasicNameValuePair("regage", AgeHolder));
                 nameValuePairs.add(new BasicNameValuePair("regpassword", PasswordHolder));
-
                 try {
                     HttpClient httpClient = new DefaultHttpClient();
-
                     HttpPost httpPost = new HttpPost(ServerURL);
-
                     httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
                     HttpResponse httpResponse = httpClient.execute(httpPost);
-
                     HttpEntity httpEntity = httpResponse.getEntity();
-
                     str =  EntityUtils.toString(httpEntity);
-
                 } catch (ClientProtocolException e) {
-
                 } catch (IOException e) {
 
                 }

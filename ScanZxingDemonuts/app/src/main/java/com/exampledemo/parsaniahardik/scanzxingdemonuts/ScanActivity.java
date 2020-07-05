@@ -105,24 +105,12 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
 
             @Override
             protected void onPostExecute(String result) {
-
                 super.onPostExecute(result);
-
-                //Toast.makeText(login.this, result, Toast.LENGTH_LONG).show();
-                // loginactivity.loginstat= "sds";
                 if(result.equalsIgnoreCase("valid")){
-
-                    //myIntent.putExtra("name", TempName); //Optional parameter
-                   // Toast.makeText(ScanActivity.this, "Valid ticket", Toast.LENGTH_SHORT).show();
                     MainActivity.tvresult.setText(ticketdata);
                     MainActivity.showticketstatus.setImageResource(R.drawable.ok);
-                    //  Intent myIntent2 = new Intent(ScanActivity.this,journeyplan.class);
-                  // startActivity(myIntent2);
-
                 }
                 else{
-
-                    //Toast.makeText(ScanActivity.this, "Invalid Ticket", Toast.LENGTH_SHORT).show();
                     MainActivity.tvresult.setText(ticketdata);
                     MainActivity.showticketstatus.setImageResource(R.drawable.no);
                 }

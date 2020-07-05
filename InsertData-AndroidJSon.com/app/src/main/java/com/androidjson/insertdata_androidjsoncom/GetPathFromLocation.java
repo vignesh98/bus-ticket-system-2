@@ -122,18 +122,14 @@ public class GetPathFromLocation extends AsyncTask<String, Void, PolylineOptions
                 for (int i = 0; i < routes.size(); i++) {
                     points = new ArrayList<>();
                     lineOptions = new PolylineOptions();
-
                     // Fetching i-th route
                     List<HashMap<String, String>> path = routes.get(i);
-
                     // Fetching all the points in i-th route
                     for (int j = 0; j < path.size(); j++) {
                         HashMap<String, String> point = path.get(j);
-
                         double lat = Double.parseDouble(point.get("lat"));
                         double lng = Double.parseDouble(point.get("lng"));
                         LatLng position = new LatLng(lat, lng);
-
                         points.add(position);
                     }
 
